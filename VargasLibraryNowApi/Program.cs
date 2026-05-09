@@ -10,14 +10,12 @@ var app = builder.Build();
 //app.Urls.Add($"http://+:{port}");
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
 
-{
+
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
 
-app.UseHttpsRedirection();
 
 app.MapControllers();
 
