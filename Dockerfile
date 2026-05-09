@@ -12,4 +12,4 @@ RUN dotnet publish "VargasLibraryNowAPi.csproj" -c Release -o /app/out
 FROM base AS final
 WORKDIR /app
 COPY --from=build /app/out
-ENTRYPOINT ["dotnet" , "VargasLibraryNowApi.dll"]S
+ENTRYPOINT ["dotnet" , "VargasLibraryNowApi.dll"]
