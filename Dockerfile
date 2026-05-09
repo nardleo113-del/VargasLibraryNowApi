@@ -5,11 +5,13 @@ ENV ASPNETCORE_URLS=http://+:8080
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
+COPY VargasLibraryNowApi/VargasLibraryNowApi.csproj VargasLibraryNowApi/
+RUN dotnet restore "VargasLibraryNowApi/VargasLibraryNowApi.csproj"
 COPY . .
-RUN dotnet restore "VargasLibraryNowAPi/VargasLibraryNowAPi.csproj"
-RUN dotnet publish "VargasLibraryNowAPi/VargasLibraryNowAPi.csproj" -c Release -o /app/out
+RUN dotnet publish "VargasLibraryNowApi/VargasLibraryNowApi.csproj" -c Release -o /app/out
 
 FROM base AS final
 WORKDIR /app
 COPY --from=build /app/out .
 ENTRYPOINT ["dotnet", "VargasLibraryNowApi.dll"]
+
